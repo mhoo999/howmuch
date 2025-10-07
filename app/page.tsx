@@ -2,6 +2,8 @@
 
 import { useFormStore } from '@/store/useFormStore';
 import { Gift, ArrowRight } from 'lucide-react';
+import Step1RelationshipForm from '@/components/forms/Step1RelationshipForm';
+import Step2WeddingForm from '@/components/forms/Step2WeddingForm';
 
 export default function Home() {
   const { currentStep, nextStep } = useFormStore();
