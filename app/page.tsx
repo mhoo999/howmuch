@@ -100,10 +100,7 @@ function StepIndicator() {
   );
 }
 
-// 임시 폼 컴포넌트들 (다음 단계에서 구현)
-function Step1RelationshipForm() {
-  return <div className="text-center py-12">Step 1: 관계 정보 입력</div>;
-}
+import Step1RelationshipForm from '@/components/forms/Step1RelationshipForm';
 
 function Step2WeddingForm() {
   return <div className="text-center py-12">Step 2: 예식 정보 입력</div>;
