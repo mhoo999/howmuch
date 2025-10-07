@@ -4,6 +4,7 @@ import { useFormStore } from '@/store/useFormStore';
 import { Gift, ArrowRight } from 'lucide-react';
 import Step1RelationshipForm from '@/components/forms/Step1RelationshipForm';
 import Step2WeddingForm from '@/components/forms/Step2WeddingForm';
+import Step3UserForm from '@/components/forms/Step3UserForm';
 
 export default function Home() {
   const { currentStep, nextStep } = useFormStore();
@@ -100,14 +101,4 @@ function StepIndicator() {
       ))}
     </div>
   );
-}
-
-import Step1RelationshipForm from '@/components/forms/Step1RelationshipForm';
-
-function Step2WeddingForm() {
-  return <div className="text-center py-12">Step 2: 예식 정보 입력</div>;
-}
-
-function Step3UserForm() {
-  return <div className="text-center py-12">Step 3: 추가 정보 입력</div>;
 }
