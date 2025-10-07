@@ -1,4 +1,3 @@
-// src/components/forms/Step2WeddingForm.tsx
 'use client';
 
 import { useState } from 'react';

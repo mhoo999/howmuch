@@ -1,4 +1,3 @@
-// src/components/forms/Step3UserForm.tsx
 'use client';
 
 import { useState } from 'react';
@@ -28,10 +27,35 @@ export default function Step3UserForm() {
     
     setIsLoading(true);
     
-    // API 호출 시뮬레이션 (다음 단계에서 실제 구현)
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          relationship: formData.relationship,
+          wedding: formData.wedding,
+          user: { ...formData.user, ...formState },
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('분석 실패');
+      }
+  
+      const recommendation = await response.json();
+      
+      // Store에 저장 (useFormStore에 setRecommendation 사용)
+      useFormStore.getState().setRecommendation(recommendation);
+      
       router.push('/result');
-    }, 2000);
+    } catch (error) {
+      console.error('분석 에러:', error);
+      alert('분석 중 오류가 발생했습니다. 다시 시도해주세요.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const updateField = (field: string, value: any) => {
