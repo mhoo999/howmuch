@@ -47,7 +47,7 @@ export default function Step1RelationshipForm() {
           value={formState.name}
           onChange={(e) => updateField('name', e.target.value)}
           placeholder="예: 김철수"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
       </div>
 
@@ -85,7 +85,7 @@ export default function Step1RelationshipForm() {
             value={formState.meetingPlaceDetail}
             onChange={(e) => updateField('meetingPlaceDetail', e.target.value)}
             placeholder="어디서 알게 되셨나요?"
-            className="w-full mt-3 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500"
+            className="w-full mt-3 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 text-black placeholder:text-gray-400"
           />
         )}
       </div>
@@ -103,7 +103,7 @@ export default function Step1RelationshipForm() {
               max="50"
               value={formState.yearsKnown}
               onChange={(e) => updateField('yearsKnown', parseInt(e.target.value) || 0)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 text-black placeholder:text-gray-400"
             />
             <span className="text-sm text-gray-600 mt-1 block">년</span>
           </div>
@@ -114,7 +114,7 @@ export default function Step1RelationshipForm() {
               max="11"
               value={formState.monthsKnown}
               onChange={(e) => updateField('monthsKnown', parseInt(e.target.value) || 0)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 text-black placeholder:text-gray-400"
             />
             <span className="text-sm text-gray-600 mt-1 block">개월</span>
           </div>
@@ -132,7 +132,7 @@ export default function Step1RelationshipForm() {
           value={formState.oneOnOneMeetings}
           onChange={(e) => updateField('oneOnOneMeetings', parseInt(e.target.value) || 0)}
           placeholder="0"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 text-black placeholder:text-gray-400"
         />
         <p className="text-sm text-gray-500 mt-1">
           단체 모임 제외, 1:1 또는 소수 모임만
@@ -178,7 +178,7 @@ export default function Step1RelationshipForm() {
           value={formState.mutualFriends}
           onChange={(e) => updateField('mutualFriends', parseInt(e.target.value) || 0)}
           placeholder="0"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 text-black placeholder:text-gray-400"
         />
       </div>
 

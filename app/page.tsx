@@ -23,7 +23,7 @@ export default function Home() {
         </div>
         
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          얼마낼까
+          얼마니
         </h1>
         <p className="text-gray-600 mb-8">
           AI가 분석하는 적정 축의금

@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "얼마낼까 - AI 축의금 계산기",
+  title: "얼마니 - AI 축의금 계산기",
   description: "AI가 분석하는 적정 축의금 금액 추천 서비스",
 };
 

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFormStore } from '@/store/useFormStore';
 import { Gift, MapPin, Clock, Users, TrendingUp, Home, Share2 } from 'lucide-react';
+import { formatAmount } from '@/lib/utils';
 
 export default function ResultPage() {
   const router = useRouter();
@@ -35,11 +36,11 @@ export default function ResultPage() {
     );
   }
 
-  // 임시 추천 데이터 (다음 단계에서 실제 AI 결과로 교체)
+  // 임시 추천 데이터도 만원 단위로
   const mockRecommendation = {
-    minimum: 50000,
-    recommended: 100000,
-    generous: 150000,
+    minimum: 5,
+    recommended: 10,
+    generous: 15,
     reasoning: {
       relationshipScore: 75,
       venueScore: 80,
@@ -47,7 +48,7 @@ export default function ResultPage() {
       reciprocityScore: 70,
     },
     explanation: '관계의 깊이와 예식장 수준, 이동 거리를 종합적으로 고려한 결과입니다.',
-    regionalAverage: 95000,
+    regionalAverage: 9.5,
     distance: 15.3,
     travelCost: 8000,
   };
@@ -140,7 +141,7 @@ export default function ResultPage() {
           <div className="space-y-3 text-sm">
             <InfoRow
               label="지역 평균 축의금"
-              value={`${rec.regionalAverage.toLocaleString()}원`}
+              value={formatAmount(rec.regionalAverage)}
             />
             <InfoRow
               label="예식장까지 거리"
@@ -153,7 +154,7 @@ export default function ResultPage() {
             {formData.user?.previousGiftReceived && (
               <InfoRow
                 label="받았던 축의금"
-                value={`${formData.user.previousGiftAmount?.toLocaleString()}원`}
+                value={formatAmount(formData.user.previousGiftAmount || 0)}
               />
             )}
           </div>
@@ -177,7 +178,8 @@ export default function ResultPage() {
               reset();
               router.push('/');
             }}
-            className="flex-1 py-4 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+            className="flex-1 py-4 border-2 border-gray-600 rounded-xl font-semibold bg-white text-gray-600 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+
           >
             <Home className="w-5 h-5" />
             처음으로
@@ -187,7 +189,7 @@ export default function ResultPage() {
               if (navigator.share) {
                 navigator.share({
                   title: '얼마낼까 - 축의금 추천',
-                  text: `${formData.relationship?.name}님 결혼식 축의금 추천: ${rec.recommended.toLocaleString()}원`,
+                  text: `${formData.relationship?.name}님 결혼식 축의금 추천: ${formatAmount(rec.recommended)}`,
                 });
               }
             }}
@@ -223,10 +225,10 @@ function AmountCard({
         {label}
       </p>
       <p className={`text-xl font-bold ${highlighted ? 'text-white' : 'text-gray-900'}`}>
-        {amount.toLocaleString()}
+        {amount}
       </p>
       <p className={`text-xs mt-1 ${highlighted ? 'text-rose-100' : 'text-gray-500'}`}>
-        원
+        만원
       </p>
     </div>
   );

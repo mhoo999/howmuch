@@ -33,21 +33,6 @@ export default function Step2WeddingForm() {
         예식 정보를 알려주세요
       </h2>
 
-      {/* 예식장 이름 */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          예식장 이름
-        </label>
-        <input
-          type="text"
-          required
-          value={formState.venueName}
-          onChange={(e) => updateField('venueName', e.target.value)}
-          placeholder="예: 더컨벤션 웨딩홀"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
-        />
-      </div>
-
       {/* 예식장 주소 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
@@ -60,7 +45,7 @@ export default function Step2WeddingForm() {
           value={formState.venueAddress}
           onChange={(e) => updateField('venueAddress', e.target.value)}
           placeholder="예: 서울시 강남구 테헤란로 123"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
         <p className="text-sm text-gray-500 mt-1">
           AI가 예식장 정보와 거리를 분석합니다
@@ -81,7 +66,7 @@ export default function Step2WeddingForm() {
             : new Date().toISOString().split('T')[0]
           }
           onChange={(e) => updateField('weddingDate', new Date(e.target.value))}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
       </div>
 

@@ -80,7 +80,7 @@ export default function Step3UserForm() {
           required
           value={formState.age}
           onChange={(e) => updateField('age', parseInt(e.target.value) || 30)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
         <p className="text-sm text-gray-500 mt-1">
           연령대별 평균 축의금 참고용
@@ -98,7 +98,7 @@ export default function Step3UserForm() {
           value={formState.occupation}
           onChange={(e) => updateField('occupation', e.target.value)}
           placeholder="예: 회사원, 학생, 프리랜서 등"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
       </div>
 
@@ -114,7 +114,7 @@ export default function Step3UserForm() {
           value={formState.userAddress}
           onChange={(e) => updateField('userAddress', e.target.value)}
           placeholder="예: 서울시 마포구"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
         <p className="text-sm text-gray-500 mt-1">
           이동 거리 계산에 사용됩니다
@@ -149,30 +149,30 @@ export default function Step3UserForm() {
 
       {/* 과거 받은 금액 */}
       {formState.previousGiftReceived && (
-        <div className="animate-in slide-in-from-top">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            받은 축의금 금액
-          </label>
-          <div className="relative">
-            <input
-              type="number"
-              min="0"
-              step="10000"
-              required
-              value={formState.previousGiftAmount}
-              onChange={(e) => updateField('previousGiftAmount', parseInt(e.target.value) || 0)}
-              placeholder="0"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
-            />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">
-              원
-            </span>
-          </div>
-          <p className="text-sm text-gray-500 mt-1">
-            받은 금액을 고려하여 추천합니다
-          </p>
+      <div className="animate-in slide-in-from-top">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          받은 축의금 금액
+        </label>
+        <div className="relative">
+          <input
+            type="number"
+            min="0"
+            step="1"
+            required
+            value={formState.previousGiftAmount}
+            onChange={(e) => updateField('previousGiftAmount', parseInt(e.target.value) || 0)}
+            placeholder="0"
+            className="w-full px-4 py-3 pr-16 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          />
+          <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">
+            만원
+          </span>
         </div>
-      )}
+        <p className="text-sm text-gray-500 mt-1">
+          받은 금액을 고려하여 추천합니다 (예: 10만원 → 10)
+        </p>
+      </div>
+    )}
 
       {/* 버튼 */}
       <div className="flex gap-3 pt-4">

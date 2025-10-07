@@ -8,10 +8,8 @@ const openai = new OpenAI({
 export async function analyzeWeddingGift(formData: FormData): Promise<AIRecommendation> {
   const { relationship, wedding, user } = formData;
 
-  // 관계 점수 계산 (0-100)
   const relationshipScore = calculateRelationshipScore(relationship);
   
-  // 프롬프트 생성
   const prompt = `당신은 한국의 경조사 문화 전문가입니다. 다음 정보를 바탕으로 적절한 축의금 금액을 추천해주세요.
 
 ## 관계 정보
@@ -33,28 +31,29 @@ export async function analyzeWeddingGift(formData: FormData): Promise<AIRecommen
 - 나이: ${user.age}세
 - 직업: ${user.occupation}
 - 출발지: ${user.userAddress}
-- 과거 받은 축의금: ${user.previousGiftReceived ? `${user.previousGiftAmount}원` : '없음'}
+- 과거 받은 축의금: ${user.previousGiftReceived ? `${user.previousGiftAmount}만원` : '없음'}
 
 다음 형식으로 JSON만 응답해주세요:
 {
-  "minimum": 숫자 (최소 금액),
-  "recommended": 숫자 (추천 금액),
-  "generous": 숫자 (넉넉한 금액),
+  "minimum": 숫자 (최소 금액, 만원 단위),
+  "recommended": 숫자 (추천 금액, 만원 단위),
+  "generous": 숫자 (넉넉한 금액, 만원 단위),
   "venueScore": 0-100 (예식장 수준 점수),
   "distanceScore": 0-100 (거리 점수),
   "reciprocityScore": 0-100 (상호관계 점수),
   "explanation": "추천 이유 설명 (2-3문장)",
-  "regionalAverage": 숫자 (해당 지역 평균),
+  "regionalAverage": 숫자 (해당 지역 평균, 만원 단위),
   "distance": 숫자 (km),
-  "travelCost": 숫자 (예상 교통비)
+  "travelCost": 숫자 (예상 교통비, 원 단위)
 }
 
 주의사항:
-- 금액은 만원 단위로
-- 한국 축의금 평균: 5만원~15만원
+- **모든 축의금 금액은 만원 단위로 표기** (예: 10만원 → 10)
+- 한국 축의금 평균: 5~15 (만원 단위)
 - 관계가 가까울수록, 예식장이 고급일수록 높게
 - 받은 축의금이 있으면 비슷하거나 약간 높게
-- 동반 인원이 있으면 1인당 3-5만원 추가 고려`;
+- 동반 인원이 있으면 1인당 3-5 추가 고려
+- 교통비만 원 단위로 계산`;
 
   try {
     const response = await openai.chat.completions.create({
@@ -62,7 +61,7 @@ export async function analyzeWeddingGift(formData: FormData): Promise<AIRecommen
       messages: [
         {
           role: 'system',
-          content: '당신은 한국 경조사 문화 전문가입니다. 항상 JSON 형식으로만 응답합니다.',
+          content: '당신은 한국 경조사 문화 전문가입니다. 항상 JSON 형식으로만 응답하며, 축의금은 만원 단위로 계산합니다.',
         },
         {
           role: 'user',

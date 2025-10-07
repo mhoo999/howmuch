@@ -25,14 +25,14 @@ export interface RelationshipInfo {
     occupation: string;
     userAddress: string;
     previousGiftReceived: boolean;
-    previousGiftAmount?: number;
+    previousGiftAmount?: number; // 만원 단위
   }
   
   // AI 분석 결과
   export interface AIRecommendation {
-    minimum: number;
-    recommended: number;
-    generous: number;
+    minimum: number; // 만원 단위
+    recommended: number; // 만원 단위
+    generous: number; // 만원 단위
     reasoning: {
       relationshipScore: number;
       venueScore: number;
@@ -40,9 +40,9 @@ export interface RelationshipInfo {
       reciprocityScore: number;
     };
     explanation: string;
-    regionalAverage: number;
+    regionalAverage: number; // 만원 단위
     distance: number;
-    travelCost: number;
+    travelCost: number; // 원 단위 (교통비는 원 단위 유지)
   }
   
   // 전체 폼 데이터
