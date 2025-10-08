@@ -20,6 +20,7 @@ export default function Step2WeddingForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     updateWedding(formState);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     nextStep();
   };
 
@@ -44,6 +45,7 @@ export default function Step2WeddingForm() {
           required
           value={formState.venueAddress}
           onChange={(e) => updateField('venueAddress', e.target.value)}
+          onFocus={(e) => e.target.select()}
           placeholder="예: 서울시 강남구 테헤란로 123"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
@@ -128,7 +130,10 @@ export default function Step2WeddingForm() {
       <div className="flex gap-2 sm:gap-3 pt-4">
         <button
           type="button"
-          onClick={prevStep}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            prevStep();
+          }}
           className="flex-1 py-3 sm:py-4 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
         >
           <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />

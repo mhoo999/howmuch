@@ -80,6 +80,7 @@ export default function Step3UserForm() {
           required
           value={formState.age}
           onChange={(e) => updateField('age', parseInt(e.target.value) || 30)}
+          onFocus={(e) => e.target.select()}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
         <p className="text-sm text-gray-500 mt-1">
@@ -97,6 +98,7 @@ export default function Step3UserForm() {
           required
           value={formState.occupation}
           onChange={(e) => updateField('occupation', e.target.value)}
+          onFocus={(e) => e.target.select()}
           placeholder="예: 회사원, 학생, 프리랜서 등"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
@@ -113,6 +115,7 @@ export default function Step3UserForm() {
           required
           value={formState.userAddress}
           onChange={(e) => updateField('userAddress', e.target.value)}
+          onFocus={(e) => e.target.select()}
           placeholder="예: 서울시 마포구"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent text-black placeholder:text-gray-400"
         />
@@ -161,6 +164,7 @@ export default function Step3UserForm() {
             required
             value={formState.previousGiftAmount}
             onChange={(e) => updateField('previousGiftAmount', parseInt(e.target.value) || 0)}
+            onFocus={(e) => e.target.select()}
             placeholder="0"
             className="w-full px-4 py-3 pr-16 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
           />
@@ -178,7 +182,10 @@ export default function Step3UserForm() {
       <div className="flex gap-2 sm:gap-3 pt-4">
         <button
           type="button"
-          onClick={prevStep}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            prevStep();
+          }}
           disabled={isLoading}
           className="flex-1 py-3 sm:py-4 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 text-sm sm:text-base"
         >

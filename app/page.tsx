@@ -37,7 +37,10 @@ export default function Home() {
         </div>
 
         <button
-          onClick={nextStep}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            nextStep();
+          }}
           className="w-full bg-rose-600 text-white py-3 sm:py-4 rounded-xl font-semibold hover:bg-rose-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
         >
           시작하기
