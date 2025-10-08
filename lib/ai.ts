@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { FormData, AIRecommendation } from '@/types';
+import { FormData, AIRecommendation, RelationshipInfo } from '@/types';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -95,7 +95,7 @@ export async function analyzeWeddingGift(formData: FormData): Promise<AIRecommen
   }
 }
 
-function calculateRelationshipScore(relationship: any): number {
+function calculateRelationshipScore(relationship: RelationshipInfo): number {
   let score = 0;
 
   // 알고 지낸 기간 (최대 30점)

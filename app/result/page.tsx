@@ -56,59 +56,56 @@ export default function ResultPage() {
   const rec = recommendation || mockRecommendation;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-4 sm:py-6 md:py-8 px-4">
       <div className="max-w-2xl mx-auto">
         {/* 헤더 */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-rose-100 p-3 rounded-full">
-              <Gift className="w-6 h-6 text-rose-600" />
+        <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 mb-4 sm:mb-6">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4">
+            <div className="bg-rose-100 p-2 sm:p-3 rounded-full">
+              <Gift className="w-5 h-5 sm:w-6 sm:h-6 text-rose-600" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-lg sm:text-2xl font-bold text-gray-900">
                 {formData.relationship?.name}님 축의금
               </h1>
-              <p className="text-gray-600 text-sm">AI 분석 완료</p>
+              <p className="text-gray-600 text-xs sm:text-sm">AI 분석 완료</p>
             </div>
           </div>
         </div>
 
         {/* 추천 금액 카드 */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6 text-center">
+        <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6 text-center">
             추천 축의금 금액
           </h2>
 
-          <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
             <AmountCard
               label="최소"
               amount={rec.minimum}
-              color="gray"
             />
             <AmountCard
               label="적정"
               amount={rec.recommended}
-              color="rose"
               highlighted
             />
             <AmountCard
               label="넉넉한"
               amount={rec.generous}
-              color="gray"
             />
           </div>
 
-          <div className="bg-rose-50 border border-rose-200 rounded-xl p-4">
-            <p className="text-rose-900 font-medium mb-2">💡 추천 이유</p>
-            <p className="text-rose-800 text-sm leading-relaxed">
+          <div className="bg-rose-50 border border-rose-200 rounded-xl p-3 sm:p-4">
+            <p className="text-rose-900 font-medium mb-1 sm:mb-2 text-sm sm:text-base">💡 추천 이유</p>
+            <p className="text-rose-800 text-xs sm:text-sm leading-relaxed">
               {rec.explanation}
             </p>
           </div>
         </div>
 
         {/* 상세 분석 */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
-          <h3 className="font-semibold text-gray-900 mb-4">상세 분석</h3>
+        <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 mb-4 sm:mb-6">
+          <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-3 sm:mb-4">상세 분석</h3>
           
           <div className="space-y-3">
             <AnalysisBar
@@ -135,10 +132,10 @@ export default function ResultPage() {
         </div>
 
         {/* 추가 정보 */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
-          <h3 className="font-semibold text-gray-900 mb-4">참고 정보</h3>
-          
-          <div className="space-y-3 text-sm">
+        <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 mb-4 sm:mb-6">
+          <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-3 sm:mb-4">참고 정보</h3>
+
+          <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
             <InfoRow
               label="지역 평균 축의금"
               value={formatAmount(rec.regionalAverage)}
@@ -161,27 +158,26 @@ export default function ResultPage() {
         </div>
 
         {/* 봉투 작성 팁 */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
-          <h3 className="font-semibold text-gray-900 mb-4">📝 봉투 작성 팁</h3>
-          <div className="space-y-2 text-sm text-gray-700">
+        <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 mb-4 sm:mb-6">
+          <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-3 sm:mb-4">📝 봉투 작성 팁</h3>
+          <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-700">
             <p>• 검은색 펜 사용 (볼펜 가능)</p>
-            <p>• 앞면: "축 결혼" 또는 "祝 結婚"</p>
-            <p>• 뒷면: 본인 이름 또는 "○○○ 드림"</p>
+            <p>• 앞면: &quot;축 결혼&quot; 또는 &quot;祝 結婚&quot;</p>
+            <p>• 뒷면: 본인 이름 또는 &quot;○○○ 드림&quot;</p>
             <p>• 새 지폐 사용 권장</p>
           </div>
         </div>
 
         {/* 액션 버튼 */}
-        <div className="flex gap-3">
+        <div className="flex gap-2 sm:gap-3">
           <button
             onClick={() => {
               reset();
               router.push('/');
             }}
-            className="flex-1 py-4 border-2 border-gray-600 rounded-xl font-semibold bg-white text-gray-600 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
-
+            className="flex-1 py-3 sm:py-4 border-2 border-gray-600 rounded-xl font-semibold bg-white text-gray-600 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
           >
-            <Home className="w-5 h-5" />
+            <Home className="w-4 h-4 sm:w-5 sm:h-5" />
             처음으로
           </button>
           <button
@@ -193,9 +189,9 @@ export default function ResultPage() {
                 });
               }
             }}
-            className="flex-1 bg-rose-600 text-white py-4 rounded-xl font-semibold hover:bg-rose-700 transition-colors flex items-center justify-center gap-2"
+            className="flex-1 bg-rose-600 text-white py-3 sm:py-4 rounded-xl font-semibold hover:bg-rose-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
           >
-            <Share2 className="w-5 h-5" />
+            <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
             공유하기
           </button>
         </div>
@@ -204,57 +200,55 @@ export default function ResultPage() {
   );
 }
 
-function AmountCard({ 
-  label, 
-  amount, 
-  color, 
-  highlighted 
-}: { 
-  label: string; 
-  amount: number; 
-  color: 'gray' | 'rose';
+function AmountCard({
+  label,
+  amount,
+  highlighted
+}: {
+  label: string;
+  amount: number;
   highlighted?: boolean;
 }) {
   return (
-    <div className={`rounded-xl p-4 text-center ${
-      highlighted 
-        ? 'bg-rose-600 text-white ring-4 ring-rose-200' 
+    <div className={`rounded-xl p-2 sm:p-3 md:p-4 text-center ${
+      highlighted
+        ? 'bg-rose-600 text-white ring-2 sm:ring-4 ring-rose-200'
         : 'bg-gray-50 text-gray-700'
     }`}>
-      <p className={`text-xs mb-2 ${highlighted ? 'text-rose-100' : 'text-gray-500'}`}>
+      <p className={`text-xs mb-1 sm:mb-2 ${highlighted ? 'text-rose-100' : 'text-gray-500'}`}>
         {label}
       </p>
-      <p className={`text-xl font-bold ${highlighted ? 'text-white' : 'text-gray-900'}`}>
+      <p className={`text-lg sm:text-xl font-bold ${highlighted ? 'text-white' : 'text-gray-900'}`}>
         {amount}
       </p>
-      <p className={`text-xs mt-1 ${highlighted ? 'text-rose-100' : 'text-gray-500'}`}>
+      <p className={`text-xs mt-0.5 sm:mt-1 ${highlighted ? 'text-rose-100' : 'text-gray-500'}`}>
         만원
       </p>
     </div>
   );
 }
 
-function AnalysisBar({ 
-  icon, 
-  label, 
-  score 
-}: { 
-  icon: React.ReactNode; 
-  label: string; 
+function AnalysisBar({
+  icon,
+  label,
+  score
+}: {
+  icon: React.ReactNode;
+  label: string;
   score: number;
 }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <div className="flex items-center gap-2 text-sm text-gray-700">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-700">
           {icon}
           <span>{label}</span>
         </div>
-        <span className="text-sm font-medium text-gray-900">{score}점</span>
+        <span className="text-xs sm:text-sm font-medium text-gray-900">{score}점</span>
       </div>
-      <div className="w-full bg-gray-200 rounded-full h-2">
-        <div 
-          className="bg-rose-600 h-2 rounded-full transition-all duration-500"
+      <div className="w-full bg-gray-200 rounded-full h-1.5 sm:h-2">
+        <div
+          className="bg-rose-600 h-1.5 sm:h-2 rounded-full transition-all duration-500"
           style={{ width: `${score}%` }}
         />
       </div>
